@@ -19,12 +19,12 @@ function AddBookPage() {
         body: JSON.stringify(data),
       });
       const result = await res.json();
-      if (!result.error) {
-        alert("Book added successfully!");
-        navigate("/");
+      if (result.status != 200) {
+        alert("Please login to add a book");
       } else {
-        alert("Failed: " + result.msg);
+        navigate("/");
       }
+      console.log(result);
     } catch (error) {
       console.error(error);
       alert("Something went wrong!");

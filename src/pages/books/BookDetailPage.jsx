@@ -10,7 +10,6 @@ function BookDetailPage() {
 
   const [book, setBook] = useState(null);
   const [loader, setLoader] = useState(true);
-  console.log("book =>", book);
   useEffect(() => {
     const fetchBook = async () => {
       try {
@@ -37,20 +36,30 @@ function BookDetailPage() {
         },
       });
       const data = await res.json();
-      console.log(data);
-      if (!data.error) {
-        alert("Book deleted successfully!");
-        navigate("/");
+      if (data.status != 200) {
+        alert("Please login to delete a book");
       } else {
-        alert("Failed to delete: " + data.msg);
+        alert("Book deleted successfully");
+        navigate("/");
       }
+      console.log("data =>", data.status);
+      // if (!data.error) {
+      //   alert("Book deleted successfully!");
+      //   navigate("/");
+      // } else {
+      //   alert("Failed to delete: " + data.msg);
+      // }
     } catch (error) {
       console.error(error);
     }
   };
 
   const handleUpdate = () => {
-    navigate(`/books/edit/${id}`);
+    if (isUser) {
+      navigate(`/books/edit/${id}`);
+    } else {
+      alert("Please login to update any book");
+    }
   };
 
   if (loader) return <p className="p-4">Loading...</p>;

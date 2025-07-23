@@ -10,20 +10,20 @@ import {
 } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 import Signup from "./pages/auth/Signup";
-import Login from "./pages/auth/login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BooksPage from "./pages/books/Books";
 import BookDetailPage from "./pages/books/BookDetailPage";
 import AddBookPage from "./pages/books/AddBookPage";
 import UpdateBookPage from "./pages/books/UpdateBookPage";
+import Login from "./pages/auth/login";
 
 // PAGES & COMPONENTS
 //Auth-Components
 
 function AppRouter() {
   const { isUser } = useContext(UserContext);
-  console.log(isUser);
+  console.log(Boolean(isUser));
   return (
     <BrowserRouter>
       <Routes>
