@@ -61,7 +61,10 @@ function AppRouter() {
             path="/books/add"
             element={isUser ? <AddBookPage /> : <Navigate to={"/"} />}
           />
-          <Route path="/books/edit/:id" element={<UpdateBookPage />} />
+          <Route
+            path="/books/edit/:id"
+            element={isUser ? <UpdateBookPage /> : <Navigate to={"/"} />}
+          />
         </Route>
         {/* NOT FOUND ROUTE */}
         <Route

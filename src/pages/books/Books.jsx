@@ -24,27 +24,27 @@ function BooksPage() {
     fetchBooks();
   }, []);
 
-  return (
+  return loader ? (
+    <div className="flex fixed left-0 top-0 bg-white h-screen w-screen justify-center items-center text-4xl">
+      Loading ....
+    </div>
+  ) : (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Books List</h1>
-      {loader ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {books.map((book) => (
-            <Link key={book._id} to={`/books/${book._id}`}>
-              <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                <h2 className="text-lg font-semibold mb-2">{book.title}</h2>
-                <p className="text-gray-700">Author: {book.author}</p>
-                <p className="text-gray-700">Genre: {book.genre}</p>
-                <p className="text-gray-700">
-                  Year: {new Date(book.publishedYear).getFullYear()}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {books.map((book) => (
+          <Link key={book._id} to={`/books/${book._id}`}>
+            <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+              <h2 className="text-lg font-semibold mb-2">{book.title}</h2>
+              <p className="text-gray-700">Author: {book.author}</p>
+              <p className="text-gray-700">Genre: {book.genre}</p>
+              <p className="text-gray-700">
+                Year: {new Date(book.publishedYear).getFullYear()}
+              </p>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
