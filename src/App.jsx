@@ -16,7 +16,7 @@ import BooksPage from "./pages/books/Books";
 import BookDetailPage from "./pages/books/BookDetailPage";
 import AddBookPage from "./pages/books/AddBookPage";
 import UpdateBookPage from "./pages/books/UpdateBookPage";
-import Login from "./pages/auth/login";
+import Login from "./pages/auth/Login";
 
 // PAGES & COMPONENTS
 //Auth-Components
